@@ -1966,6 +1966,13 @@ void show_carliv_menu()
                         break;
                     }
                 }
+                
+                if (volume_for_path("/system") != NULL) {
+                    if (default_aromafm("/system")) {
+                        break;
+                    }
+                }
+                
                 ui_print("No clockworkmod/.aromafm/aromafm.zip on sdcards\n");
                 ui_print("Browsing custom locations\n");
                 custom_aroma_menu();
