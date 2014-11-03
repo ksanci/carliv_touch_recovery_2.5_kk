@@ -178,8 +178,8 @@ void show_power_menu() {
 
 void toggle_touch_control_menu() 
 {
-    if (ensure_path_mounted("/emmc/") != 0) {
-        LOGE ("Can't mount internal sdcard\n");
+    if (ensure_path_mounted("/system/") != 0) {
+        LOGE ("Can't mount system\n");
         return;
     }
 
@@ -194,15 +194,15 @@ void toggle_touch_control_menu()
     };
     
     char tmp[PATH_MAX];
-    strcpy(tmp, "/emmc/clockworkmod" );
-    mkdir(tmp, S_IRWXU | S_IRWXG | S_IRWXO); //touch flag on /emmc/clockworkmod, make it
+    strcpy(tmp, "/system/clockworkmod" );
+    mkdir(tmp, S_IRWXU | S_IRWXG | S_IRWXO); //touch flag on /system/clockworkmod, make it
     
     struct stat info;
-    if (0 != stat("/emmc/clockworkmod/.full_nav", &info))
+    if (0 != stat("/system/clockworkmod/.full_nav", &info))
     {
     	list[0] = "Touch control - ON";
     }
-    else if (0 == stat("/emmc/clockworkmod/.full_nav", &info))
+    else if (0 == stat("/system/clockworkmod/.full_nav", &info))
     {
     	list[0] = "Touch control - OFF";
     }
@@ -212,14 +212,14 @@ void toggle_touch_control_menu()
     {
         case 0:
             {
-            	if (0 != stat("/emmc/clockworkmod/.full_nav", &info))
+            	if (0 != stat("/system/clockworkmod/.full_nav", &info))
             	{
-		    	__system("touch /emmc/clockworkmod/.full_nav");
+		    	__system("touch /system/clockworkmod/.full_nav");
 		    	ui_print("Full touch control disabled\n");
 				}
-				else if (0 == stat("/emmc/clockworkmod/.full_nav", &info))
+				else if (0 == stat("/system/clockworkmod/.full_nav", &info))
 				{
-				    	__system("rm /emmc/clockworkmod/.full_nav");
+				    	__system("rm /system/clockworkmod/.full_nav");
 				    	ui_print("Full touch control enabled\n");
 				    	ui_print("Click on buttons on screen for selection.\n");
 				    	ui_print("Swipe left for Go Back.\n");
@@ -232,7 +232,7 @@ void toggle_touch_control_menu()
             break;
         case 1:
             {
-		    	__system("touch /emmc/clockworkmod/.full_nav");
+		    	__system("touch /system/clockworkmod/.full_nav");
 		    	ui_print("Full touch control disabled\n");
 		    	ui_print("Use Volume/Power keys to navigate.\n");
 			toggle_touch_control_menu();
