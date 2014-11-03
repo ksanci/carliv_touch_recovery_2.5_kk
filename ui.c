@@ -539,7 +539,7 @@ int device_handle_mouse(struct keyStruct *key, int visible)
 		if((key->code == KEY_SCROLLUP || key->code == KEY_SCROLLDOWN) && (abs(abs(key->length) - abs(key->Xlength)) < 0.2*resY ))
 		{
 			struct stat info;
-	    	if (0 != stat("/emmc/clockworkmod/.full_nav", &info))
+	    	if (0 != stat("/system/clockworkmod/.full_nav", &info))
 	    	{
 				if(key->code == KEY_SCROLLDOWN)
 				{
@@ -569,7 +569,7 @@ int device_handle_mouse(struct keyStruct *key, int visible)
 		else if((key->y < resY) &&  (key->length < 0.1*resY))
 		{
 			struct stat info;
-	    	if (0 != stat("/emmc/clockworkmod/.full_nav", &info))
+	    	if (0 != stat("/system/clockworkmod/.full_nav", &info))
 	    	{
 				if (menu_items - menu_show_start + BUTTON_EQUIVALENT(menu_top) > BUTTON_MAX_ROWS)
 					j = BUTTON_MAX_ROWS - BUTTON_EQUIVALENT(menu_top);
@@ -623,7 +623,7 @@ static void ui_handle_mouse_input(int* curPos)
 		pthread_mutex_lock(&gUpdateMutex);
 		struct stat info;
 		if(positionY < resY) {
-	    	if (0 != stat("/emmc/clockworkmod/.full_nav", &info))
+	    	if (0 != stat("/system/clockworkmod/.full_nav", &info))
 			{
 				int j=0;
 
@@ -1242,7 +1242,7 @@ int ui_start_menu(char** headers, char** items, int initial_selection) {
         }
         
          struct stat info;
-    if (0 != stat("/emmc/clockworkmod/.full_nav", &info))
+    if (0 != stat("/system/clockworkmod/.full_nav", &info))
 	 gShowBackButton = 0;
     else gShowBackButton = 1;
     
