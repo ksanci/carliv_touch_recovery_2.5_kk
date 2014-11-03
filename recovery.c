@@ -906,7 +906,7 @@ main(int argc, char **argv) {
     load_volume_table();
     process_volumes();
     
-   __system("rm /emmc/clockworkmod/.full_nav"); //enable touch control
+   __system("rm /system/clockworkmod/.full_nav"); //enable touch control
     
     LOGI("Processing arguments.\n");
     get_args(&argc, &argv);
