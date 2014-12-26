@@ -2322,6 +2322,7 @@ int verify_root_and_recovery() {
             }
         }
     }
+ 
 
     if (0 == lstat("/system/xbin/su", &st)) {
         exists = 1;
@@ -2339,7 +2340,7 @@ int verify_root_and_recovery() {
     if (!exists) {
         ui_show_text(1);
         ret = 1;
-        if (confirm_selection("Root access is missing. Root device?", "Yes - Root device (/system/xbin/su)")) {
+        if (confirm_selection("Root access is missing. Root?", "Yes - Root device (/system/xbin/su)")) {
             __system("/sbin/install-su.sh");
         }
     }

@@ -901,7 +901,7 @@ main(int argc, char **argv) {
     ui_print(EXPAND(RECOVERY_VERSION_INFO)"\n");
     ui_print("Modified and compiled\n");
     ui_print("by ksanci\n");
-    ui_print("W450 KitKat v1\n");
+    ui_print("W450 KitKat v2\n");
 
     load_volume_table();
     process_volumes();
